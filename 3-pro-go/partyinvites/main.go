@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"net/http"
 )
 
 type Rsvp struct {
@@ -21,10 +22,26 @@ func loadTemplates() {
 			fmt.Println("Loaded template", index, name)
 		
 		} else {
-			fmt.Println("Failed to load", err, name)
+			panic(err)
 		}
 	}
 }
+
+func welComeHandler(writer http.ResponseWriter, request *http.Request) {
+	templates["welcome"].Execute(writer, nil)
+}
+
+func listHandler(writer http.ResponseWriter, request *http.Request) {
+	templates["list"].Execute(writer, responses)
+}
 func main() {
 	loadTemplates()
+
+	http.HandleFunc("/", welComeHandler)
+	http.HandleFunc("/list", listHandler)
+
+	err := http.ListenAndServe(":3000", nil)
+	if (err != nil) {
+		fmt.Println(err)
+	}
 }
