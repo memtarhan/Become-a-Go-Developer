@@ -1,4 +1,4 @@
-package dblayer
+package db
 
 /*
 	Get a list of all products
