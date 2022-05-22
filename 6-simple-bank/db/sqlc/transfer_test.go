@@ -10,8 +10,8 @@ import (
 
 func createRandomTransfer(t *testing.T, account1, account2 Account) Transfer {
 	arg := CreateTransferParams{
-		FromAccountID: int64(account1.ID),
-		ToAccountID:   int64(account2.ID),
+		FromAccountID: account1.ID,
+		ToAccountID:   account2.ID,
 		Amount:        utils.RandomMoney(),
 	}
 
@@ -61,8 +61,8 @@ func TestListTransfer(t *testing.T) {
 	}
 
 	arg := ListTransfersParams{
-		FromAccountID: int64(account1.ID),
-		ToAccountID:   int64(account1.ID),
+		FromAccountID: account1.ID,
+		ToAccountID:   account1.ID,
 		Limit:         5,
 		Offset:        5,
 	}
@@ -73,6 +73,6 @@ func TestListTransfer(t *testing.T) {
 
 	for _, transfer := range transfers {
 		require.NotEmpty(t, transfer)
-		require.True(t, transfer.FromAccountID == int64(account1.ID) || transfer.ToAccountID == int64(account1.ID))
+		require.True(t, transfer.FromAccountID == account1.ID || transfer.ToAccountID == account1.ID)
 	}
 }

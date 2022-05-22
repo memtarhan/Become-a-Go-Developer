@@ -10,7 +10,7 @@ import (
 
 func createRandomEntry(t *testing.T, account Account) Entry {
 	arg := CreateEntryParams{
-		AccountID: int64(account.ID),
+		AccountID: account.ID,
 		Amount:    utils.RandomMoney(),
 	}
 
@@ -53,7 +53,7 @@ func TestListEntries(t *testing.T) {
 	}
 
 	arg := ListEntriesParams{
-		AccountID: int64(account.ID),
+		AccountID: account.ID,
 		Limit:     5,
 		Offset:    5,
 	}
