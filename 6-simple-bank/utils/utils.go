@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"math"
 	"math/rand"
 	"strings"
 	"time"
@@ -45,4 +46,8 @@ func RandomCurrency() string {
 	currencies := []string{"USD", "EUR"}
 	n := len(currencies)
 	return currencies[rand.Intn(n)]
+}
+
+func RoundFloat(x float64) float64 {
+	return math.Round(x*100) / 100
 }
