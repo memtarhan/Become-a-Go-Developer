@@ -1,11 +1,11 @@
-package main 
+package main
 
 import (
 	"fmt"
 	"time"
 )
 
-func main() {
+func trigger() {
 	// use fmt package to print a string
 	fmt.Println("Hello world!")
 
