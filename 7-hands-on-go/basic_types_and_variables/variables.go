@@ -34,8 +34,34 @@ func main() {
 
 	// use unicode package to confirm that the rune is a letter
 	unicode.IsLetter(a)
+
+	// declare float and convert it to an unsigned int 
+	a := 42.5 
+	b := uint(a)
+	fmt.Printf("%v=%T, %v=%T", a, a, b, b)
+	fmt.Println()
+
+	doPointers()
 }
 
 func printVars() {
 	fmt.Println("x, y, z:", x, y, z)
+}
+
+func doPointers() {
+	// create a variable of type *T where T is an int 
+	var a *int 
+
+	// declare and assing 'b' variable of type int 
+	b := 100 
+
+	// assign the address of b to a 
+	a = &b
+
+	// print out the value of a which is the address of b 
+	fmt.Println(a)
+
+	// print out the value at the address of b 
+	fmt.Println(*a)
+
 }
